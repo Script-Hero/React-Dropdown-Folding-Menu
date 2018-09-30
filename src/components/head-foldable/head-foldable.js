@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './head-foldable.css.js';
+import {FaBars} from 'react-icons/fa';
 
-import {FaBars} from 'react-icons/fa'
+import FoldingItem from './../folding-item/folding-item.js'
 
 function clone_json(json){
   return JSON.parse(JSON.stringify(json));
@@ -42,6 +43,8 @@ export default class Head_Foldable extends React.Component
         <div className="hamburger-container" style={styles.hamburger_container}>
           <FaBars style={styles.hamburger_styles}/>
         </div>
+
+        <FoldingItem text="yeet" visible={this.state.activated} />
       </div>
     )
   }
