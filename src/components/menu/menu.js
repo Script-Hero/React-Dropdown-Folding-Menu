@@ -1,15 +1,16 @@
 import React from 'react';
-import Head_Foldable from './../head-foldable/head-foldable.js';
-import FoldingItem from './../folding-item/folding-item.js';
+import HeadFoldable from './../head-foldable/head-foldable.js';
 
 export default class Menu extends React.Component
 {
+
   render()
   {
+    var items = this.props.items;
     return (
       <div id="menu">
-        <Head_Foldable >
-        </Head_Foldable>
+        <HeadFoldable items={items}>
+        </HeadFoldable>
       </div>
     )
   }

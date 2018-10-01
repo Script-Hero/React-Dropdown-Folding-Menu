@@ -8,7 +8,7 @@ function clone_json(json){
   return JSON.parse(JSON.stringify(json));
 }
 
-export default class Head_Foldable extends React.Component
+export default class HeadFoldable extends React.Component
 {
   constructor(props)
   {
@@ -16,6 +16,8 @@ export default class Head_Foldable extends React.Component
     this.state = {activated : false, head_foldable_styles : clone_json(styles.head_foldable_styles)};
 
     this.toggle_activated = this.toggle_activated.bind(this);
+    this.construct_items = this.construct_items.bind(this);
+
   }
 
   toggle_activated()
@@ -36,15 +38,31 @@ export default class Head_Foldable extends React.Component
     this.setState({activated : !this.state.activated, head_foldable_styles : new_head_foldable_styles});
   }
 
+  // Pass in a JSON object {text : "String", href : "String"}
+  construct_items()
+  {
+    var items = this.props.items;
+    var jsx_items = [];
+
+    for(var i in items)
+    {
+      jsx_items.push(<FoldingItem text={items[i].text} href={items[i].href} visible={this.state.activated} />)
+    }
+
+    return jsx_items;
+  }
+
   render()
   {
+    var items = this.construct_items();
+
     return (
       <div className="head-foldable" onClick={this.toggle_activated} style={this.state.head_foldable_styles}>
         <div className="hamburger-container" style={styles.hamburger_container}>
           <FaBars style={styles.hamburger_styles}/>
         </div>
 
-        <FoldingItem text="yeet" visible={this.state.activated} />
+        {items}
       </div>
     )
   }

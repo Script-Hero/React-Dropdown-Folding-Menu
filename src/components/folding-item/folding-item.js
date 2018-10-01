@@ -20,11 +20,11 @@ export default class FoldingItem extends React.Component
     console.log(this.state)
     setTimeout(function(){
       var folding_item_text_style = copy_json(this.state.folding_item_text_style);
-      if(this.state.folding_item_text_style.fontSize == '18px')
+      if(this.state.folding_item_text_style.fontSize === '18px')
       {
         folding_item_text_style.fontSize = '0px';
         folding_item_text_style.opacity = '0';
-      }else if (this.state.folding_item_text_style.fontSize == '0px') {
+      }else if (this.state.folding_item_text_style.fontSize === '0px') {
         folding_item_text_style.fontSize = '18px';
         folding_item_text_style.opacity = '1';
       }
@@ -71,7 +71,7 @@ export default class FoldingItem extends React.Component
 
     return (
       <div className="folding-item" style={this.state.folding_item_style}>
-        <p style={this.state.folding_item_text_style}>{this.props.text}</p>
+        <a href={this.props.href} target='_blank' style={this.state.folding_item_text_style}>{this.props.text}</a>
       </div>
     )
 
